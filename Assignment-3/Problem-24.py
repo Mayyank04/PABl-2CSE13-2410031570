@@ -1,11 +1,19 @@
-def jump(nums):
-    jumps = 0
-    curr_end = 0
-    farthest = 0
+def min_swaps(arr, k):
+    n = len(arr)
+    good = sum(1 for x in arr if x <= k)
+    if good == 0:
+        return 0
 
-    for i in range(len(nums) - 1):
-        farthest = max(farthest, i + nums[i])
-        if i == curr_end:
-            jumps += 1
-            curr_end = farthest
-    return jumps
+    bad = sum(1 for i in range(good) if arr[i] > k)
+    ans = bad
+
+    for i in range(0, n - good):
+        if arr[i] > k:
+            bad -= 1
+        if arr[i + good] > k:
+            bad += 1
+        ans = min(ans, bad)
+
+    return ans
+
+print(min_swaps([2,1,5,6,3], 3))  # 1

@@ -1,11 +1,10 @@
-def searchInsert(nums, target):
-    l, r = 0, len(nums) - 1
-    while l <= r:
-        mid = (l + r) // 2
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] < target:
-            l = mid + 1
-        else:
-            r = mid - 1
-    return l
+def chocolate_distribution(arr, m):
+    if m == 0 or m > len(arr):
+        return 0
+    arr.sort()
+    ans = float('inf')
+    for i in range(len(arr) - m + 1):
+        ans = min(ans, arr[i+m-1] - arr[i])
+    return ans
+
+print(chocolate_distribution([3,4,1,9,56,7,9,12], 5))  # 6

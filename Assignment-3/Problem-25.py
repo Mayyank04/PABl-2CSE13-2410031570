@@ -1,8 +1,11 @@
-from collections import defaultdict
+def is_pal(num):
+    return str(num) == str(num)[::-1]
 
-def groupAnagrams(strs):
-    mp = defaultdict(list)
-    for s in strs:
-        key = ''.join(sorted(s))
-        mp[key].append(s)
-    return list(mp.values())
+def all_palindrome(arr):
+    for x in arr:
+        if not is_pal(x):
+            return False
+    return True
+
+print(all_palindrome([111,222,333,444,555]))  
+print(all_palindrome([121,131,20]))          
