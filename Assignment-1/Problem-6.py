@@ -7,4 +7,5 @@ def rotate(arr):
     arr[0]=last
     return arr
 arr = [1,2,3,4,5]
+#print(rotate(arr))
 print(f"Output :{rotate(arr)}")
